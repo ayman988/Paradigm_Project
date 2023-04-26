@@ -1,5 +1,5 @@
-    
-	window.addEventListener('DOMContentLoaded', () => {
+
+window.addEventListener('DOMContentLoaded', () => {
     document.getElementById("sudoku").onclick=function(){OpenSudoku()}	
     document.getElementById("Tic-Tac-Toe").onclick=function(){OpenTicTacToe()}	
     document.getElementById("eight-queen").onclick=function(){OpenEightQueen()}	
@@ -51,8 +51,5 @@
         game.control(s);
         // game.draw();
     }
-
-
-
 
 
