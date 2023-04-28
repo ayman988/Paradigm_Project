@@ -62,9 +62,14 @@ export class Checkers extends GameEngine{
     
 
 }
+//calculate the board row and column from the input
+//example F5 E4
 function control(){
-  
     s=document.getElementById("input").value
+    if(s.length!=5){
+        document.getElementById("outMessage").innerHTML="Not Valid!"
+        return
+    }
     input=s.split(" ")
     r1=input[0][0].charCodeAt(0)-'A'.charCodeAt(0)
     c1=input[0][1]-1
@@ -80,15 +85,14 @@ function control(){
             if(r1-r2==2&&Math.abs(c1-c2)==2&&board[r1-1][(c1+c2)/2]==1){
                 board[r1-1][(c1+c2)/2]=-1
             }
-
-            if(this.musteat==false){
-                this.turn=Math.abs(this.turn-1)
-                if(this.turn==0){
-                    document.getElementById("Turn").innerHTML="White's Turn"
-                }
-                else{
-                    document.getElementById("Turn").innerHTML="Black's Turn"
-                }
+        }
+        else{
+            turn=0
+           
+            board[r1][c1]=-1
+            board[r2][c2]=1
+            if(r2-r1==2&&Math.abs(c1-c2)==2&&board[r1+1][(c1+c2)/2]==0){
+                board[r1+1][(c1+c2)/2]=-1
             }
         }
       
@@ -101,6 +105,7 @@ function control(){
 
 
 }
+//check if the move is valid
 function check(r1,c1,r2,c2){
     if(r1<0||r1>7||c1<0||c1>7|r2<0||r2>7|c2<0||c2>7||turn==0&&board[r1][c1]!=0||turn==1&&board[r1][c1]!=1||board[r2][c2]!=-1){
         return false
@@ -113,3 +118,12 @@ function check(r1,c1,r2,c2){
     }
     return false
 }
+
+
+}
+
+
+const game = new Checkers();
+window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('enter').onclick=function(){play(game,document.getElementById("input").value)}
+})  

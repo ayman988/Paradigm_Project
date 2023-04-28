@@ -46,8 +46,13 @@ export class Chess extends GameEngine{
         }
     }
 }
+//calulate the board row and column
 function control(){
     s=document.getElementById("input").value
+    if(s.length!=5){
+        document.getElementById("outMessage").innerHTML="Not Valid!"
+        return
+    }
     input=s.split(" ")
     r1=input[0][0].charCodeAt(0)-'A'.charCodeAt(0)
     c1=input[0][1]-1
@@ -70,6 +75,8 @@ function control(){
 
     }
 }
+//check if the move is valid 
+//example: G5 E5
 function check(r1,c1,r2,c2){
     document.getElementById("outMessage").innerHTML=""
 
@@ -241,23 +248,12 @@ function check(r1,c1,r2,c2){
                 }
                 return true
             }
-            else{
-                return false
-            }
-    
+            return true
         }
-    
-    }  
-}
+        else{
+            return false
+        }
 
-const game = new Chess();
-window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('enter').onclick=function(){play(game,document.getElementById("input").value)}
-    window.addEventListener("keypress",function(event){
-        if (event.key === "Enter"){
-            play(game,document.getElementById('input').value)
-        }
-    })
-}) 
+    }
 
 }
