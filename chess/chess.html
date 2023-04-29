@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess</title>
+</head>
+<link rel="stylesheet" href="chess.css">
+<script type="module" src="chess.js"></script>
+<body>
+    <h1>Chess</h1>
+    
+    <div class="board" id="board">
+      <div class="row">
+         <div class="space"> </div>
+         <div class="Numbers">1</div>
+         <div class="Numbers">2</div>
+         <div class="Numbers">3</div>
+         <div class="Numbers">4</div>
+         <div class="Numbers">5</div>
+         <div class="Numbers">6</div>
+         <div class="Numbers">7</div>
+         <div class="Numbers">8</div>
+         
+      </div>
+        <div class="row">
+         <div class="Letters"><p>A</p></div>
+       <div class="Whitecell" id="A1"></div>
+       <div class="Blackcell" id="A2"></div>
+       <div class="Whitecell" id="A3"></div>
+       <div class="Blackcell" id="A4"></div>
+       <div class="Whitecell" id="A5"></div>
+       <div class="Blackcell" id="A6"></div>
+       <div class="Whitecell" id="A7"></div>
+       <div class="Blackcell" id="A8"></div>
+        </div>
+        <div class="row">
+         <div class="Letters"><p>B</p></div>
+       <div class="Blackcell" id="B1"></div>
+       <div class="Whitecell" id="B2"></div>
+       <div class="Blackcell" id="B3"></div>
+       <div class="Whitecell" id="B4"></div>
+       <div class="Blackcell" id="B5"></div>
+       <div class="Whitecell" id="B6"></div>
+       <div class="Blackcell" id="B7"></div>
+       <div class="Whitecell" id="B8"></div>
+    </div>
+       <div class="row">
+         <div class="Letters"><p>C</p></div>
+       <div class="Whitecell" id="C1"></div>
+       <div class="Blackcell" id="C2"></div>
+       <div class="Whitecell" id="C3"></div>
+       <div class="Blackcell" id="C4"></div>
+       <div class="Whitecell" id="C5"></div>
+       <div class="Blackcell" id="C6"></div>
+       <div class="Whitecell" id="C7"></div>
+       <div class="Blackcell" id="C8"></div>
+    </div>
+    <div class="row">
+      <div class="Letters"><p>D</p></div>
+       <div class="Blackcell" id="D1"></div>
+       <div class="Whitecell" id="D2"></div>
+       <div class="Blackcell" id="D3"></div>
+       <div class="Whitecell" id="D4"></div>
+       <div class="Blackcell" id="D5"></div>
+       <div class="Whitecell" id="D6"></div>
+       <div class="Blackcell" id="D7"></div>
+       <div class="Whitecell" id="D8"></div>
+    </div>
+       <div class="row">
+         <div class="Letters"><p>E</p></div>
+       <div class="Whitecell" id="E1"></div>
+       <div class="Blackcell" id="E2"></div>
+       <div class="Whitecell" id="E3"></div>
+       <div class="Blackcell" id="E4"></div>
+       <div class="Whitecell" id="E5"></div>
+       <div class="Blackcell" id="E6"></div>
+       <div class="Whitecell" id="E7"></div>
+       <div class="Blackcell" id="E8"></div>
+    </div>
+       <div class="row">
+         <div class="Letters"><p>F</p></div>
+       <div class="Blackcell" id="F1"></div>
+       <div class="Whitecell" id="F2"></div>
+       <div class="Blackcell" id="F3"></div>
+       <div class="Whitecell" id="F4"></div>
+       <div class="Blackcell" id="F5"></div>
+       <div class="Whitecell" id="F6"></div>
+       <div class="Blackcell" id="F7"></div>
+       <div class="Whitecell" id="F8"></div>
+    </div>
+    <div class="row">
+      <div class="Letters"><p>G</p></div>
+       <div class="Whitecell" id="G1"></div>
+       <div class="Blackcell" id="G2"></div>
+       <div class="Whitecell" id="G3"></div>
+       <div class="Blackcell" id="G4"></div>
+       <div class="Whitecell" id="G5"></div>
+       <div class="Blackcell" id="G6"></div>
+       <div class="Whitecell" id="G7"></div>
+       <div class="Blackcell" id="G8"></div>
+    </div>
+       <div class="row">
+         <div class="Letters"><p>H</p></div>
+       <div class="Blackcell" id="H1"></div>
+       <div class="Whitecell" id="H2"></div>
+       <div class="Blackcell" id="H3"></div>
+       <div class="Whitecell" id="H4"></div>
+       <div class="Blackcell" id="H5"></div>
+       <div class="Whitecell" id="H6"></div>
+       <div class="Blackcell" id="H7"></div>
+       <div class="Whitecell" id="H8"></div>
+    </div>
+     
+    <br><br>
+    <div class="row">
+      <label style="font-size: x-large;margin-left:70px;">Enter a move:</label>
+      <input type="text" id="input">
+  </div>
+  <br>
+  <div class="row">
+    <button id="enter">Enter</button>
+  </div>
+  <p id="outMessage"></p>
+  <br>
+  </div>
+    </div>
+</body>
+</html>

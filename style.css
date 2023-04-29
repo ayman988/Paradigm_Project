@@ -1,0 +1,29 @@
+head{
+    background-color:lightgrey
+}
+body{
+    background-color: lightgrey;
+    align-items:center;
+ 
+}
+h1{
+    text-align: center;
+    font-weight: bold;
+}
+.button{
+    background-color: #078d90; 
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration:none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;   
+    width: 130px;
+    height: 50px;
+    border-radius: 20px;
+    box-shadow: 3px 7px black;
+}
+
+

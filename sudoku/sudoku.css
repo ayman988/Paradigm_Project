@@ -1,0 +1,98 @@
+head{
+    background-color: lightgray;
+}
+body{
+    background-color: lightgrey;
+    align-items:center;
+}
+h1{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+}
+.board{
+  
+    text-align: center;
+    margin-left: 600px;
+}
+.cell{
+    border-width: 1px;
+    height:30px;
+    width: 30px;
+    border-style:solid;
+    border-color:lightgray;
+    text-align: center;
+    font-size: x-large;
+    background-color: white;
+    
+    
+}
+.cellBorderRight{
+    border-width: 1px;
+    border-color:lightgray;
+    border-right-color:black;
+    height:30px;
+    width: 30px;
+    border-style:solid;
+    text-align: center;
+    font-size: x-large;
+    background-color: white;
+}
+.cellBorderbottom{
+    border-width: 1px;
+    border-color:lightgray;
+    border-bottom-color:black;
+    height:30px;
+    width: 30px;
+    border-style:solid;
+    text-align: center;
+    font-size: x-large;
+    background-color: white;
+}
+.cellBorderRightbottom{
+    border-style:solid;
+    border-top-color:lightgray;
+    border-left-color: lightgray;
+    border-right-color:black;
+    border-bottom-color:black;
+    border-width: 1px;
+    height:30px;
+    width: 30px;
+    text-align: center;
+    font-size: x-large;
+    background-color: white;
+}
+
+.row{
+   display: flex;
+    
+}
+.Letters{
+    border: 1px;
+    border-style:groove;
+    border-color: lightgray;
+    height:30px;
+    width: 30px;
+    font-weight:800;
+    font-size: x-large;
+    color:brown;
+}
+#input{
+    width: 100px;
+    height: 30px;
+
+}
+#enter{
+    width: 70px;
+    height: 40px;
+    background-color: brown;
+    color: white;
+    margin-left: 100px;
+}
+#outMessage{
+    width:70px;
+    height:30px;
+    color: red;
+    margin-left: 100px;
+    font-weight: bolder;
+}

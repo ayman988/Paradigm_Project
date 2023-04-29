@@ -1,0 +1,82 @@
+head{
+    background-color: lightgray;
+}
+body{
+    background-color: lightgrey;
+    align-items:center;
+    text-align: center;
+}
+h1{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+}
+.board{
+    text-align: center;
+    margin-left: 550px;
+  
+}
+
+.cell{
+    border-width: 1px;
+    height:70px;
+    width: 70px;
+    border-style:solid;
+    border-color:black;
+    text-align: center;
+    font-size:xx-large;
+    background-color: white;
+    padding-top:7px;
+    border-radius: 50%;
+   
+}
+
+.row{
+   display: flex;
+    
+}
+
+
+.Numbers{
+    border: 1px;
+    border-style:groove;
+    border-color: lightgray;
+    height:30px;
+    width: 70px;
+    font-weight:800;
+    font-size: 20px;
+    color:brown;
+    text-align: center;
+}
+
+#input{
+    width: 100px;
+    height: 30px;
+
+}
+#enter{
+    width: 70px;
+    height: 40px;
+    background-color: brown;
+    color: white;
+    margin-left: 220px;
+}
+#outMessage{
+    width:70px;
+    height:30px;
+    color: red;
+    margin-left: 220px;
+    font-weight: bolder;
+}
+.frame{
+    width: 499px;
+    height: 471px;
+    border: 1px;
+    border-style: solid;
+    border-color: brown;
+    border-radius: 50px;
+    text-align:center;
+    background-color: rgb(39, 171, 238);
+    
+}
+

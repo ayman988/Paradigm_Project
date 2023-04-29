@@ -1,0 +1,76 @@
+head{
+    background-color: lightgray;
+}
+body{
+    background-color: lightgrey;
+    align-items:center;
+}
+h1{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+}
+.row{
+    display: flex;
+    
+}
+.cell{
+    border-width: 1px;
+    height:100px;
+    width: 100px;
+    border-style:solid;
+    border-color:black;
+    text-align: center;
+    font-size:100px;
+    background-color: white;
+    vertical-align: middle;
+}
+
+
+.Numbers{
+    height:30px;
+    width: 100px;
+    font-weight:800;
+    font-size: x-large;
+    color:brown; 
+    text-align: center;
+}
+.Letters{
+    height:100px;
+    width: 30px;
+    font-weight:800;
+    font-size: x-large;
+    color:brown; 
+    
+}
+.Letters p{
+  vertical-align: baseline;
+}
+.space{
+    width: 30px;
+    height:30px;
+}
+.board{
+  
+    text-align: center;
+    margin-left: 550px;
+}
+#input{
+    width: 100px;
+    height: 30px;
+
+}
+#enter{
+    width: 70px;
+    height: 40px;
+    background-color: brown;
+    color: white;
+    margin-left: 150px;
+}
+#outMessage{
+    width:100px;
+    height:30px;
+    color: red;
+    margin-left: 135px;
+    font-weight: bolder;
+}

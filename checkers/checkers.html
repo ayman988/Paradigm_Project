@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkers</title>
+</head>
+<link rel="stylesheet" href="checkers.css">
+<script type="module" src="checkers.js"></script>
+<body>
+    <h1>Checkers</h1>
+    
+    <div class="board" id="board">
+      <div class="row">
+         <div class="space"> </div>
+         <div class="Numbers">1</div>
+         <div class="Numbers">2</div>
+         <div class="Numbers">3</div>
+         <div class="Numbers">4</div>
+         <div class="Numbers">5</div>
+         <div class="Numbers">6</div>
+         <div class="Numbers">7</div>
+         <div class="Numbers">8</div>
+         
+      </div>
+        <div class="row">
+         <div class="Letters"><div class="innerLetter">A</div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="A2"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="A4"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="A6"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="A8"class="piece"></div></div>
+        </div>
+        <div class="row">
+         <div class="Letters"><div class="innerLetter">B</div></div>
+       <div class="Blackcell"><div id="B1"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="B3"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="B5"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="B7"class="piece"></div></div>
+       <div class="Whitecell"></div>
+    </div>
+       <div class="row">
+         <div class="Letters"><div class="innerLetter">C</div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="C2"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="C4"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="C6"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="C8"class="piece"></div></div>
+    </div>
+    <div class="row">
+      <div class="Letters"><div class="innerLetter">D</div></div>
+       <div class="Blackcell"><div id="D1"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="D3"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="D5"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="D7"class="piece"></div></div>
+       <div class="Whitecell"></div>
+    </div>
+       <div class="row">
+         <div class="Letters"><div class="innerLetter">E</div></div>
+         <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="E2"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="E4"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="E6"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="E8"class="piece"></div></div>
+    </div>
+       <div class="row">
+         <div class="Letters"><div class="innerLetter">F</div></div>
+         <div class="Blackcell"><div id="F1"class="piece"></div></div>
+         <div class="Whitecell"></div>
+         <div class="Blackcell"><div id="F3"class="piece"></div></div>
+         <div class="Whitecell"></div>
+         <div class="Blackcell"><div id="F5"class="piece"></div></div>
+         <div class="Whitecell"></div>
+         <div class="Blackcell"><div id="F7"class="piece"></div></div>
+         <div class="Whitecell"></div>
+    </div>
+    <div class="row">
+      <div class="Letters"><div class="innerLetter">G</div></div>
+      <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="G2"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="G4"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="G6"class="piece"></div></div>
+       <div class="Whitecell"></div>
+       <div class="Blackcell"><div id="G8"class="piece"></div></div>
+    </div>
+       <div class="row">
+         <div class="Letters"><div class="innerLetter">H</div></div>
+         <div class="Blackcell"><div id="H1"class="piece"></div></div>
+         <div class="Whitecell"></div>
+         <div class="Blackcell"><div id="H3"class="piece"></div></div>
+         <div class="Whitecell"></div>
+         <div class="Blackcell"><div id="H5"class="piece"></div></div>
+         <div class="Whitecell"></div>
+         <div class="Blackcell"><div id="H7"class="piece"></div></div>
+         <div class="Whitecell"></div>
+    </div>
+     
+    <br><br>
+    <div class="row">
+      <label style="font-size: x-large;margin-left:70px;">Enter a move:</label>
+      <input type="text" id="input">
+  </div>
+  <br>
+  <div class="row">
+    <button id="enter">Enter</button>
+  </div>
+  <p id="outMessage"></p>
+  <br>
+  </div>
+    </div>
+</body>
+</html>

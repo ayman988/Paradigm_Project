@@ -1,0 +1,148 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku</title>
+</head>
+<link rel="stylesheet" href="sudoku.css">
+<script type="module" src="sudoku.js"></script>
+<body>
+    <h1>Sudoku</h1>
+    <br><br><br>
+    <div class="board" id="board">
+      <div class="row">
+         <div class="Letters"> </div>
+         <div class="Letters">1</div>
+         <div class="Letters">2</div>
+         <div class="Letters">3</div>
+         <div class="Letters">4</div>
+         <div class="Letters">5</div>
+         <div class="Letters">6</div>
+         <div class="Letters">7</div>
+         <div class="Letters">8</div>
+         <div class="Letters">9</div>
+      </div>
+        <div class="row">
+         <div class="Letters">A</div>
+       <div class="cell" id="A1"></div>
+       <div class="cell" id="A2"></div>
+       <div class="cellBorderRight" id="A3"> </div>
+       <div class="cell" id="A4"> </div>
+       <div class="cell" id="A5"></div>
+       <div class="cellBorderRight" id="A6"> </div>
+       <div class="cell" id="A7"> </div>
+       <div class="cell" id="A8"> </div>
+       <div class="cell" id="A9"> </div>
+        </div>
+        <div class="row">
+         <div class="Letters">B</div>
+       <div class="cell" id="B1"></div>
+       <div class="cell" id="B2"> </div>
+       <div class="cellBorderRight" id="B3"> </div>
+       <div class="cell" id="B4"></div>
+       <div class="cell" id="B5"></div>
+       <div class="cellBorderRight" id="B6"></div>
+       <div class="cell" id="B7"> </div>
+       <div class="cell" id="B8"> </div>
+       <div class="cell" id="B9"> </div>
+    </div>
+       <div class="row">
+         <div class="Letters">C</div>
+       <div class="cellBorderbottom" id="C1"> </div>
+       <div class="cellBorderbottom" id="C2"></div>
+       <div class="cellBorderRightbottom" id="C3"></div>
+       <div class="cellBorderbottom" id="C4"> </div>
+       <div class="cellBorderbottom" id="C5"> </div>
+       <div class="cellBorderRightbottom" id="C6"> </div>
+       <div class="cellBorderbottom" id="C7"> </div>
+       <div class="cellBorderbottom" id="C8"></div>
+       <div class="cellBorderbottom" id="C9"> </div>
+    </div>
+    <div class="row">
+      <div class="Letters">D</div>
+       <div class="cell" id="D1"></div>
+       <div class="cell" id="D2"> </div>
+       <div class="cellBorderRight" id="D3"> </div>
+       <div class="cell" id="D4"> </div>
+       <div class="cell" id="D5"></div>
+       <div class="cellBorderRight" id="D6"> </div>
+       <div class="cell" id="D7"> </div>
+       <div class="cell" id="D8"> </div>
+       <div class="cell" id="D9"></div>
+    </div>
+       <div class="row">
+         <div class="Letters">E</div>
+       <div class="cell" id="E1"></div>
+       <div class="cell" id="E2"> </div>
+       <div class="cellBorderRight" id="E3"> </div>
+       <div class="cell" id="E4"></div>
+       <div class="cell" id="E5"> </div>
+       <div class="cellBorderRight" id="E6">3</div>
+       <div class="cell" id="E7"> </div>
+       <div class="cell" id="E8"> </div>
+       <div class="cell" id="E9"></div>
+    </div>
+       <div class="row">
+         <div class="Letters">F</div>
+       <div class="cellBorderbottom" id="F1"></div>
+       <div class="cellBorderbottom" id="F2"> </div>
+       <div class="cellBorderRightbottom" id="F3"> </div>
+       <div class="cellBorderbottom" id="F4"> </div>
+       <div class="cellBorderbottom" id="F5"></div>
+       <div class="cellBorderRightbottom" id="F6"> </div>
+       <div class="cellBorderbottom" id="F7"> </div>
+       <div class="cellBorderbottom" id="F8"> </div>
+       <div class="cellBorderbottom" id="F9"></div>
+    </div>
+    <div class="row">
+      <div class="Letters">G</div>
+       <div class="cell" id="G1"> </div>
+       <div class="cell" id="G2"></div>
+       <div class="cellBorderRight" id="G3"> </div>
+       <div class="cell" id="G4"> </div>
+       <div class="cell" id="G5"> </div>
+       <div class="cellBorderRight" id="G6"> </div>
+       <div class="cell" id="G7"></div>
+       <div class="cell" id="G8"></div>
+       <div class="cell" id="G9"> </div>
+    </div>
+       <div class="row">
+         <div class="Letters">H</div>
+       <div class="cell" id="H1"> </div>
+       <div class="cell" id="H2"> </div>
+       <div class="cellBorderRight" id="H3"> </div>
+       <div class="cell" id="H4"></div>
+       <div class="cell" id="H5"></div>
+       <div class="cellBorderRight" id="H6"></div>
+       <div class="cell" id="H7"> </div>
+       <div class="cell" id="H8"> </div>
+       <div class="cell" id="H9"></div>
+    </div>
+       <div class="row">
+         <div class="Letters">I</div>
+       <div class="cell" id="I1"> </div>
+       <div class="cell" id="I2"> </div>
+       <div class="cellBorderRight" id="I3"> </div>
+       <div class="cell" id="I4"> </div>
+       <div class="cell" id="I5"></div>
+       <div class="cellBorderRight" id="I6"> </div>
+       <div class="cell" id="I7"> </div>
+       <div class="cell" id="I8"></div>
+       <div class="cell" id="I9"></div>
+    </div>
+    <br><br>
+    <div class="row">
+      <label style="font-size: x-large;">Enter cell and number:</label>
+      <input type="text" id="input">
+  </div>
+  <br>
+  <div class="row">
+    <button id="enter">Enter</button>
+  </div>
+  <p id="outMessage"></p>
+  <br>
+  </div>
+    </div>
+</body>
+</html>
