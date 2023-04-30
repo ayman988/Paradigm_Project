@@ -24,10 +24,12 @@ export class Connect_4 extends GameEngine{
             this.draw()
             if(this.turn=="red"){
                 this.turn="green"
+                document.getElementById("Turn").innerHTML="Green's Turn"
                
             }
             else{
                 this.turn="red"
+                document.getElementById("Turn").innerHTML="Red's Turn"
      
             }
             this.board[s-1] = (this.board[s-1]-1)

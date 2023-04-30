@@ -60,7 +60,7 @@ export class Sudoku extends GameEngine{
     }
 
     control(s){
-        if(s.length!=4){
+        if(s.length!=4||s.indexOf(" ")!=2){
           document.getElementById("outMessage").innerHTML="Not Valid Input!"
           return
       }

@@ -47,7 +47,7 @@ export class Chess extends GameEngine{
     }
 
     control(s){
-        if(s.length!=5){
+        if(s.length!=5||s.indexOf(" ")!=2){
             document.getElementById("outMessage").innerHTML="Not Valid!"
             return
         }
@@ -62,9 +62,11 @@ export class Chess extends GameEngine{
             this.board[r1][c1]='s'
             if(this.turn==0){
                 this.turn=1
+                document.getElementById("Turn").innerHTML="Black's Turn"
             }
             else{
                 this.turn=0
+                document.getElementById("Turn").innerHTML="White's Turn"
             }
          this.draw()
         }

@@ -33,9 +33,11 @@ export class Tic_Tac_Toe extends GameEngine {
     AlterTurn(){
         if(this.turn=='X'){
             this.turn='O'
+            document.getElementById("Turn").innerHTML="O's Turn"
         }
         else{
             this.turn='X'
+            document.getElementById("Turn").innerHTML="X's Turn"
         }
     }
 
@@ -96,12 +98,13 @@ window.addEventListener('DOMContentLoaded', () => {
     // add event on button enter and call the method (play) with the user input-->example:B2
     document.getElementById('enter').onclick=function(){
         play(game,document.getElementById('input').value)
+    }
         window.addEventListener("keypress",function(event){
             if (event.key === "Enter"){
                 play(game,document.getElementById('input').value)
             }
         })
-    }
+    
 })
 
 

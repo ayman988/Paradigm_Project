@@ -64,7 +64,7 @@ export class Checkers extends GameEngine{
     }
 
     control(s){
-        if(s.length!=5){
+        if(s.length!=5||s.indexOf(" ")!=2){
             document.getElementById("outMessage").innerHTML="Not Valid!"
             return
         }
@@ -82,6 +82,7 @@ export class Checkers extends GameEngine{
                 this.board[r2][c2]=0
                 if(r1-r2==2&&Math.abs(c1-c2)==2&&this.board[r1-1][(c1+c2)/2]==1){
                     this.board[r1-1][(c1+c2)/2]=-1
+                    this.MustEat()
                 }
             }
             else{
@@ -90,11 +91,18 @@ export class Checkers extends GameEngine{
                 this.board[r2][c2]=1
                 if(r2-r1==2&&Math.abs(c1-c2)==2&&this.board[r1+1][(c1+c2)/2]==0){
                     this.board[r1+1][(c1+c2)/2]=-1
+                    this.MustEat()
                 }
             }
-            this.MustEat()
+
             if(this.musteat==false){
                 this.turn=Math.abs(this.turn-1)
+                if(this.turn==0){
+                    document.getElementById("Turn").innerHTML="White's Turn"
+                }
+                else{
+                    document.getElementById("Turn").innerHTML="Black's Turn"
+                }
             }
           
             this.draw()
