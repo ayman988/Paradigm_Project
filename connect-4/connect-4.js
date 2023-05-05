@@ -60,3 +60,8 @@ export class Connect_4 extends GameEngine{
 
 
 }
+
+const game = new Connect_4();
+window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('enter').onclick=function(){play(game,document.getElementById("input").value)}
+})  

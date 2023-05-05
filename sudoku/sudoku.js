@@ -142,11 +142,6 @@ const game = new Sudoku();
 window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('enter').onclick=function(){
         play(game,document.getElementById("input").value)
-        window.addEventListener("keypress",function(event){
-            if (event.key === "Enter"){
-                play(game,document.getElementById('input').value)
-            }
-        })
     }
 })
 

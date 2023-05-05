@@ -45,30 +45,30 @@ export class Chess extends GameEngine{
             }
         }
     }
-}
+
 //calulate the board row and column
-function control(){
-    s=document.getElementById("input").value
+control(s){
+    
     if(s.length!=5){
         document.getElementById("outMessage").innerHTML="Not Valid!"
         return
     }
-    input=s.split(" ")
-    r1=input[0][0].charCodeAt(0)-'A'.charCodeAt(0)
-    c1=input[0][1]-1
-    r2=input[1][0].charCodeAt(0)-'A'.charCodeAt(0)
-    c2=input[1][1]-1
-    if(check(r1,c1,r2,c2)){
+    let input=s.split(" ")
+    let r1=input[0][0].charCodeAt(0)-'A'.charCodeAt(0)
+    let c1=input[0][1]-1
+    let r2=input[1][0].charCodeAt(0)-'A'.charCodeAt(0)
+    let c2=input[1][1]-1
+    if(this.check(r1,c1,r2,c2)){
         document.getElementById("outMessage").innerHTML=""
-        board[r2][c2]=board[r1][c1]
-        board[r1][c1]='s'
-        if(turn==0){
-            turn=1
+        this.board[r2][c2]=this.board[r1][c1]
+        this.board[r1][c1]='s'
+        if(this.turn==0){
+            this.turn=1
         }
         else{
-            turn=0
+            this.turn=0
         }
-     draw()
+     this.draw()
     }
     else{
         document.getElementById("outMessage").innerHTML="Not Valid!"
@@ -77,50 +77,51 @@ function control(){
 }
 //check if the move is valid 
 //example: G5 E5
-function check(r1,c1,r2,c2){
+check(r1,c1,r2,c2){
     document.getElementById("outMessage").innerHTML=""
 
     if(r1<0||r1>7||c1<0||c1>7|r2<0||r2>7|c2<0||c2>7){
         return false
     }
-    if(turn==0&&!White.has(board[r1][c1])||turn==1&&!Black.has(board[r1][c1])){
+    if(this.turn==0&&!this.White.has(this.board[r1][c1])||this.turn==1&&!this.Black.has(this.board[r1][c1])){
         return false
     }
-    if(turn==0&&White.has(board[r2][c2])||turn==1&&Black.has(board[r2][c2])){
+    if(this.turn==0&&this.White.has(this.board[r2][c2])||this.turn==1&&this.Black.has(this.board[r2][c2])){
         return false
     }
-    if(board[r1][c1]=='R'||board[r1][c1]=='r'){
+    if(this.board[r1][c1]=='R'||this.board[r1][c1]=='r'){
         if(Math.abs(r1-r2)==0||Math.abs(c1-c2)==0){
             if(r1>r2){
-                for(i=1;i+r2<r1;i++){
-                    if(board[i+r2][c1]!='s'){
+                for(let i=1;i+r2<r1;i++){
+                    if(this.board[i+r2][c1]!='s'){
                         return false
                     }
                 }
             }
             else if(r1<r2){
-                for(i=1;i+r1<r2;i++){
-                    if(board[i+r1][c1]!='s'){
+                for(let i=1;i+r1<r2;i++){
+                    if(this.board[i+r1][c1]!='s'){
                         return false
                     }
                 }
             }
             else if(c1>c2){
-                for(i=1;i+c2<c1;i++){
-                    if(board[r1][c2+i]!='s'){
+                for(let i=1;i+c2<c1;i++){
+                    if(this.board[r1][c2+i]!='s'){
                         return false
                     }
                 }
             }
             else{
-                for(i=1;i+c1<c2;i++){
-                    if(board[r1][c1+i]!='s'){
+                for(let i=1;i+c1<c2;i++){
+                    if(this.board[r1][c1+i]!='s'){
                         return false
                     }
                 }
             }
                return false
         }
+    }
         if(this.board[r1][c1]=='H'||this.board[r1][c1]=='h'){
                 if(Math.abs(r1-r2)==1&&Math.abs(c1-c2)==2||Math.abs(r1-r2)==2&&Math.abs(c1-c2)==1){
                     return true
@@ -132,12 +133,16 @@ function check(r1,c1,r2,c2){
                 if(r1<r2){
                     if(c1<c2){
                         for(let i=1;i+r1<r2;i++){
-                            if(this.board[i+r1][i+c1]!='s') return false
+                            if(this.board[i+r1][i+c1]!='s'){
+                                console.log("2")
+                            }
                         }
                     }
                     if(c2<c1){
                         for(let i=1;i+r1<r2;i++){
-                            if(this.board[i+r1][c1-i]!='s') return false
+                            if(this.board[i+r1][c1-i]!='s'){
+                                return false
+                            }
                         }
                     }
                 }
@@ -145,12 +150,16 @@ function check(r1,c1,r2,c2){
     
                   if(c1<c2){
                       for(let i=1;r1-i>r2;i++){
-                        if(this.board[r1-i][c1+i]!='s') return false
+                        if(this.board[r1-i][c1+i]!='s'){
+                            console.log("4")
+                        }
                       }
                     }
                     if(c2<c1){
                         for(let i=1;r1-i>r2;i++){
-                            if(this.board[r1-i][c1-i]!='s') return false
+                            if(this.board[r1-i][c1-i]!='s'){
+                                return false
+                            } 
                         }
                     }
                 }
@@ -193,12 +202,16 @@ function check(r1,c1,r2,c2){
                 if(r1<r2){
                     if(c1<c2){
                         for(let i=1;i+r1<r2;i++){
-                            if(this.board[i+r1][i+c1]!='s') return false
+                            if(this.board[i+r1][i+c1]!='s'){
+                                return false
+                            }
                         }
                     }
                     if(c2<c1){
                         for(let i=1;i+r1<r2;i++){
-                            if(this.board[i+r1][c1-i]!='s') return false
+                            if(this.board[i+r1][c1-i]!='s'){
+                                return false
+                            }
                         }
                     }
                 }
@@ -206,12 +219,16 @@ function check(r1,c1,r2,c2){
     
                   if(c1<c2){
                       for(let i=1;r1-i>r2;i++){
-                        if(this.board[r1-i][c1+i]!='s') return false
+                        if(this.board[r1-i][c1+i]!='s'){
+                            return false
+                        }
                       }
                     }
                     if(c2<c1){
                         for(let i=1;r1-i>r2;i++){
-                            if(this.board[r1-i][c1-i]!='s') return false
+                            if(this.board[r1-i][c1-i]!='s'){
+                                return false
+                            }
                         }
                     }
                 }
@@ -256,4 +273,13 @@ function check(r1,c1,r2,c2){
 
     }
 
+
 }
+
+const game = new Chess();
+window.addEventListener('DOMContentLoaded', () => {
+    
+    document.getElementById('enter').onclick=function(){
+        play(game,document.getElementById("input").value);
+    }
+})  
