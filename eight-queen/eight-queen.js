@@ -1,26 +1,20 @@
 import { GameEngine } from "../script.js";
-import { play } from "../script.js"
 
 
 export class Eight_Queens extends GameEngine{
 
-    //The initial board is all empty
-    //0-->empty,1-->queen
-    board=[
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-    ];
+    
+    
 
     constructor(){
 
         super()
-        this.board = [
+
+    }
+
+    Initialize(){
+
+        let board=[
             [0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0],
@@ -30,58 +24,76 @@ export class Eight_Queens extends GameEngine{
             [0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0],
         ];
-        this.draw();
+
+        return [board,true,"non"];
 
     }
 
-    control(s){
+    control(gameState,s){
+        let board = gameState[0];
+
+        //to delete element
+        if(s.length==4 && s[0]=='D'){
+
+            let r=s[2].charCodeAt(0)-'A'.charCodeAt(0)
+            let c=s[3]-1
+
+            if(r>'H'.charCodeAt(0)-'A'.charCodeAt(0) || r<'A'.charCodeAt(0)-'A'.charCodeAt(0) || c<0 || c>7){
+                return [board,false,"non"];
+            }
+            else{
+                console.log(r)
+                console.log(c)
+                board[r][c] = 0;
+                return [board,true,"non"];
+            }
+        }
+
         if(s.length!=2){
-          document.getElementById("outMessage").innerHTML="Not Valid Input !"
-          return
+            return [board,false,"non"];
         }
         let r=s[0].charCodeAt(0)-'A'.charCodeAt(0)
         let c=s[1]-1
-        if(this.check(r,c)){
-          document.getElementById("outMessage").innerHTML=""
-          this.board[r][c]=1
-          this.draw()
+        if(this.check(board,r,c)){
+          board[r][c]=1
+          return [board,true,"non"];
         }
         else{
-          document.getElementById("outMessage").innerHTML="it will scare a queen!"
+            return [board,false,"non"];
         }
       }
 
-      check(r,c){
-        if(this.board[r][c]==1){
+      check(board,r,c){
+        if(board[r][c]==1){
             return false
         }
         if(r>'H'.charCodeAt(0)-'A'.charCodeAt(0) || r<'A'.charCodeAt(0)-'A'.charCodeAt(0) || c<0 || c>7){
             return false;
         }
         for(let i=0;r+i<8;i++){
-            if(this.board[r+i][c]==1){
+            if(board[r+i][c]==1){
                 return false
             }
         }
         for(let i=0;r-i>=0;i++){
-            if(this.board[r-i][c]==1){
+            if(board[r-i][c]==1){
                 return false
             }
         }
         for(let i=0;i+c<8;i++){
-            if(this.board[r][c+i]==1){
+            if(board[r][c+i]==1){
                 return false
             }
         }
         for(let i=0;c-i>=0;i++){
-            if(this.board[r][c-i]==1){
+            if(board[r][c-i]==1){
                 return false
             }
         }
         let i=0;
         let j=0;
        while(r+i<8&&c+j<8){
-        if(this.board[r+i][c+j]==1){
+        if(board[r+i][c+j]==1){
             return false
         }
         i=i+1;
@@ -89,21 +101,21 @@ export class Eight_Queens extends GameEngine{
        }
        i=0;j=0;
        while(r-i>=0&&c+j<8){
-        if(this.board[r-i][c+j]==1){
+        if(board[r-i][c+j]==1){
             return false
         }
         i=i+1;j=j+1;
        }
        i=0;j=0;
        while(r+i<8&&c-j>=0){
-        if(this.board[r+i][c-j]==1){
+        if(board[r+i][c-j]==1){
             return false
         }
         i=i+1;j=j+1;
        }
        i=0;j=0;
        while(r-i>=0&&c-j>=0){
-        if(this.board[r-i][c-j]==1){
+        if(board[r-i][c-j]==1){
             return false
         }
         i=i+1;j=j+1;
@@ -111,12 +123,15 @@ export class Eight_Queens extends GameEngine{
        return true
     }
 
-    draw(){
+    draw(board){
         for(let i=0;i<8;i++){
             for(let j=0;j<8;j++){
                 let D=document.getElementById((String.fromCharCode('A'.charCodeAt(0)+i).concat(j+1)))
-                if(this.board[i][j]==1){
+                if(board[i][j]==1){
                     D.innerHTML="♛"
+                }
+                else{
+                    D.innerHTML=" "
                 }
             }
         }
@@ -126,6 +141,3 @@ export class Eight_Queens extends GameEngine{
 }
 
 const game = new Eight_Queens();
-window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('enter').onclick=function(){play(game,document.getElementById("input").value)}
-})  
