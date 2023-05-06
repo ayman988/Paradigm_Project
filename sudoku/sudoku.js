@@ -1,95 +1,101 @@
 import { GameEngine } from "../script.js";
-import { play } from "../script.js"
 
 
 export class Sudoku extends GameEngine{
 
-    board=[
-        [5,3,0,0,7,0,0,0,0],
-        [6,0,0,1,9,5,0,0,0],
-        [0,9,8,0,0,0,0,6,0],
-        [8,0,0,0,6,0,0,0,3],
-        [4,0,0,8,0,3,0,0,1],
-        [7,0,0,0,2,0,0,0,6],
-        [0,6,0,0,0,0,2,8,0],
-        [0,0,0,4,1,9,0,0,5],
-        [0,0,0,0,8,0,0,7,9]
-    ];
-
-    Base=[
-        [5,3,0,0,7,0,0,0,0],
-        [6,0,0,1,9,5,0,0,0],
-        [0,9,8,0,0,0,0,6,0],
-        [8,0,0,0,6,0,0,0,3],
-        [4,0,0,8,0,3,0,0,1],
-        [7,0,0,0,2,0,0,0,6],
-        [0,6,0,0,0,0,2,8,0],
-        [0,0,0,4,1,9,0,0,5],
-        [0,0,0,0,8,0,0,7,9]
-    ];
+    
 
     constructor(){
 
         super();
 
-        //we need a function to initialize the sudoko game here
-        this.board=[
-            [2,3,0,0,7,0,0,0,0],
-            [6,0,0,1,9,5,0,0,0],
-            [0,9,8,0,0,0,0,6,0],
-            [8,0,0,0,6,0,0,0,3],
-            [4,0,0,8,0,3,0,0,1],
-            [7,0,0,0,2,0,0,0,6],
-            [0,6,0,0,0,0,2,8,0],
-            [0,0,0,4,1,9,0,0,5],
-            [0,0,0,0,8,0,0,7,9]
-        ];
-
-        this.Base=[
-            [2,3,0,0,7,0,0,0,0],
-            [6,0,0,1,9,5,0,0,0],
-            [0,9,8,0,0,0,0,6,0],
-            [8,0,0,0,6,0,0,0,3],
-            [4,0,0,8,0,3,0,0,1],
-            [7,0,0,0,2,0,0,0,6],
-            [0,6,0,0,0,0,2,8,0],
-            [0,0,0,4,1,9,0,0,5],
-            [0,0,0,0,8,0,0,7,9]
-        ];
-        this.draw();
     }
 
-    control(s){
+    Initialize(){
+
+        let base=[
+            [5,3,0,0,7,0,0,0,0],
+            [6,0,0,1,9,5,0,0,0],
+            [0,9,8,0,0,0,0,6,0],
+            [8,0,0,0,6,0,0,0,3],
+            [4,0,0,8,0,3,0,0,1],
+            [7,0,0,0,2,0,0,0,6],
+            [0,6,0,0,0,0,2,8,0],
+            [0,0,0,4,1,9,0,0,5],
+            [0,0,0,0,8,0,0,7,9]
+        ];
+
+        let board=[
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0]
+        ];
+
+        for(let i=0; i<9; i++){
+            for(let j=0; j<9; j++){
+                if(base[i][j]!=0){
+                    board[i][j] = 11;
+                }
+                else{
+                    board[i][j] = 0;
+                }
+            }
+        }
+
+        for(let i=0;i<9;i++){
+            for(let j=0;j<9;j++){
+                let D=document.getElementById((String.fromCharCode('A'.charCodeAt(0)+i).concat(j+1)))
+                if(base[i][j]!=0){
+                    D.innerHTML=base[i][j]
+                    D.style.color="black"
+                }
+            }
+        }
+
+
+        return [board,true,"non",base]
+    }
+
+    control(gameState,s){
+
+        let board = gameState[0];
+        let base = gameState[3];
+
+
         if(s.length!=4||s.indexOf(" ")!=2){
-          document.getElementById("outMessage").innerHTML="Not Valid Input!"
-          return
+          return [board,false,"non",base]
       }
         let input=s.split(" ")
         let r=input[0][0].charCodeAt(0)-'A'.charCodeAt(0)
         let c=input[0][1]-1
         let x=input[1]
-        if(this.check(r,c,x)){
-          document.getElementById('outMessage').innerHTML=""
-          this.board[r][c]=x
-          this.draw()
+        if(this.check(board,base,r,c,x)){
+          board[r][c]=x
+          return [board,true,"non",base];
         }
         else{
-          document.getElementById('outMessage').innerHTML="already exist in a row, column or box"
+          return [board,false,"non",base];
         }
       }
 
-      check(r,c,x){
+      check(board,base,r,c,x){
         if(x<0||x>9){
             return false
         }
-        if(this.Base[r][c]!=0){
+        if(base[r][c]!=0){
             return false
         }
          for(let i=0;i<9;i++){
             if(i==c){
                 continue
             }
-            if(this.board[r][i]==x){
+            if(base[r][i]==x){
                 return false
             }
          }
@@ -97,7 +103,7 @@ export class Sudoku extends GameEngine{
             if(i==r){
                 continue
             }
-            if(this.board[i][c]==x){
+            if(base[i][c]==x){
                 return false
             }
          }
@@ -108,7 +114,7 @@ export class Sudoku extends GameEngine{
                 if(sr+i==r&&sc+j==c){
                     continue
                 }
-                if(this.board[sr+i][sc+j]==x){
+                if(base[sr+i][sc+j]==x){
                     return false
                 }
             }
@@ -116,20 +122,20 @@ export class Sudoku extends GameEngine{
          return true
     }
 
-    draw(){
+    draw(board){
+
         for(let i=0;i<9;i++){
             for(let j=0;j<9;j++){
                 let D=document.getElementById((String.fromCharCode('A'.charCodeAt(0)+i).concat(j+1)))
-                if(this.Base[i][j]!=0){
-                    D.innerHTML=this.Base[i][j]
-                    D.style.color="black"
+                if(board[i][j]==11){
+                    continue;
                 }
-                else if(this.board[i][j]==0){
+                else if(board[i][j]==0){
                     D.innerHTML=" "
                 }
                 
                 else{
-                    D.innerHTML=this.board[i][j]
+                    D.innerHTML=board[i][j]
                     D.style.color="blue"
                 }
             }
@@ -139,9 +145,4 @@ export class Sudoku extends GameEngine{
 
 const game = new Sudoku();
 
-window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('enter').onclick=function(){
-        play(game,document.getElementById("input").value)
-    }
-})
 
