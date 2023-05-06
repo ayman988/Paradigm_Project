@@ -46,31 +46,25 @@ export class Tic_Tac_Toe extends GameEngine {
 
     draw(gameState){
         let board = gameState[0];
-        let state = gameState[1];
-        if(state){
-            document.getElementById('outMessage').innerHTML=""
-            for(let i=0;i<3;i++){
-                for(let j=0;j<3;j++){
-                    let D=document.getElementById((String.fromCharCode('A'.charCodeAt(0)+i).concat(j+1)))
-                    if(board[i][j]=='X'){
-                        D.innerHTML='X'
-                        D.style.color="green"
-                    }
-                    else if(board[i][j]=='O'){
-                        D.innerHTML='O';
-                        D.style.color="purple";
-                    }
+
+        for(let i=0;i<3;i++){
+            for(let j=0;j<3;j++){
+                let D=document.getElementById((String.fromCharCode('A'.charCodeAt(0)+i).concat(j+1)))
+                if(board[i][j]=='X'){
+                    D.innerHTML='X'
+                    D.style.color="green"
+                }
+                else if(board[i][j]=='O'){
+                    D.innerHTML='O';
+                    D.style.color="purple";
                 }
             }
         }
-        else{
-            document.getElementById('outMessage').innerHTML="Not Valid!";
-        }
+
     }
 
     control(gameState,s){
         let board = gameState[0];
-        let state = gameState[1];
         let turn = gameState[2];
         if(s.length!=2){
             return [board,false,turn];

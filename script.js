@@ -81,7 +81,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
                 gameState = this.control(gameState,s);
 
-                this.draw(gameState);
+                if(gameState[1]){
+                    
+                    this.draw(gameState);
+                }
+                else{
+                    alert("Not Valid!");
+                }
+                
 
                 await new Promise(resolve => setTimeout(resolve,2000));
                 
