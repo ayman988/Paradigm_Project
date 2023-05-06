@@ -13,17 +13,20 @@ export class Sudoku extends GameEngine{
 
     Initialize(){
 
-        let base=[
-            [5,3,0,0,7,0,0,0,0],
-            [6,0,0,1,9,5,0,0,0],
-            [0,9,8,0,0,0,0,6,0],
-            [8,0,0,0,6,0,0,0,3],
-            [4,0,0,8,0,3,0,0,1],
-            [7,0,0,0,2,0,0,0,6],
-            [0,6,0,0,0,0,2,8,0],
-            [0,0,0,4,1,9,0,0,5],
-            [0,0,0,0,8,0,0,7,9]
-        ];
+        // let base=[
+        //     [5,3,0,0,7,0,0,0,0],
+        //     [6,0,0,1,9,5,0,0,0],
+        //     [0,9,8,0,0,0,0,6,0],
+        //     [8,0,0,0,6,0,0,0,3],
+        //     [4,0,0,8,0,3,0,0,1],
+        //     [7,0,0,0,2,0,0,0,6],
+        //     [0,6,0,0,0,0,2,8,0],
+        //     [0,0,0,4,1,9,0,0,5],
+        //     [0,0,0,0,8,0,0,7,9]
+        // ];
+
+        let base = this.generateSudokuBoard();
+        console.log(base);
 
         let board=[
             [0,0,0,0,0,0,0,0,0],
@@ -60,6 +63,62 @@ export class Sudoku extends GameEngine{
 
 
         return [board,true,"non",base]
+    }
+
+
+    generateSudokuBoard() {
+        const board = [];
+      
+        // Create an empty 9x9 board
+        for (let i = 0; i < 9; i++) {
+          board[i] = [];
+          for (let j = 0; j < 9; j++) {
+            board[i][j] = 0;
+          }
+        }
+      
+        // Fill the board with random numbers
+        for (let k = 0; k < 40; k++) {
+            let i = Math.floor(Math.random() * 8);
+            let j = Math.floor(Math.random() * 8);
+            let num = 0;
+            while (num === 0 || !this.isValidMove(board, i, j, num)) {
+              num = Math.floor(Math.random() * 9) + 1;
+            }
+            board[i][j] = num;
+          
+        }
+      
+        return board;
+    }
+
+    isValidMove(board, row, col, num) {
+        // Check row
+        for (let i = 0; i < 9; i++) {
+          if (board[row][i] === num) {
+            return false;
+          }
+        }
+      
+        // Check column
+        for (let i = 0; i < 9; i++) {
+          if (board[i][col] === num) {
+            return false;
+          }
+        }
+      
+        // Check box
+        const boxRow = Math.floor(row / 3) * 3;
+        const boxCol = Math.floor(col / 3) * 3;
+        for (let i = boxRow; i < boxRow + 3; i++) {
+          for (let j = boxCol; j < boxCol + 3; j++) {
+            if (board[i][j] === num) {
+              return false;
+            }
+          }
+        }
+      
+        return true;
     }
 
     control(gameState,s){
