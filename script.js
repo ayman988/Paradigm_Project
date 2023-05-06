@@ -31,25 +31,64 @@ window.addEventListener('DOMContentLoaded', () => {
     
     export class GameEngine {
         
-        board
         constructor() {
             if (this.constructor === GameEngine) {
               throw new Error("Abstract classes can't be instantiated");
             }
-        }
-        draw() {
+
+
+            
+            this.start();
+            
+            
+
+            }            
+            
+        
+
+        draw(gameState) {
             throw new Error("Method 'draw()' must be implemented.");
         }
         
-        control() {
+        control(gameState,s) {
             throw new Error("Method 'control()' must be implemented.");
+        }
+
+        Initialize(){
+
+        }
+
+
+        // state[board,state,turn]
+        async start(){
+
+            let gameState = this.Initialize();
+            this.draw(gameState);
+
+            await new Promise(resolve => setTimeout(resolve,2000));
+
+            while(true){            
+            
+
+                
+                let s = prompt("please, enter the input or END: ");
+                if(s=="END"){
+                    break;
+                }
+                if(s==null){
+                    continue;
+                }
+
+                gameState = this.control(gameState,s);
+
+                this.draw(gameState);
+
+                await new Promise(resolve => setTimeout(resolve,2000));
+                
+            }
         }
     
     }  
-    
-    export function play(game,s){
-        game.control(s);
-        // game.draw();
-    }
+
 
 
