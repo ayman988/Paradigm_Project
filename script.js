@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
             
         
 
-        draw(gameState) {
+        draw(board) {
             throw new Error("Method 'draw()' must be implemented.");
         }
         
@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
         async start(){
 
             let gameState = this.Initialize();
-            this.draw(gameState);
+            this.draw(gameState[0]);
 
             await new Promise(resolve => setTimeout(resolve,2000));
 
@@ -83,7 +83,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
                 if(gameState[1]){
                     
-                    this.draw(gameState);
+                    this.draw(gameState[0]);
                 }
                 else{
                     alert("Not Valid!");

@@ -44,8 +44,7 @@ export class Tic_Tac_Toe extends GameEngine {
         return true
     }
 
-    draw(gameState){
-        let board = gameState[0];
+    draw(board){
 
         for(let i=0;i<3;i++){
             for(let j=0;j<3;j++){

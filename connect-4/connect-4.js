@@ -1,5 +1,4 @@
 import { GameEngine } from "../script.js";
-import { play } from "../script.js"
 
 
 
@@ -13,7 +12,14 @@ export class Connect_4 extends GameEngine{
     }
 
     Initialize(){
-        let board=[5,5,5,5,5,5,5]
+        let board=[ 
+            ["s","s","s","s","s","s","s"],
+            ["s","s","s","s","s","s","s"],
+            ["s","s","s","s","s","s","s"],
+            ["s","s","s","s","s","s","s"],
+            ["s","s","s","s","s","s","s"],
+            ["s","s","s","s","s","s","s"]
+        ]
         let turn="red"
         let state = true;
         return [board,state,turn];
@@ -27,14 +33,26 @@ export class Connect_4 extends GameEngine{
         }
         if(this.check(board,s)){
 
-            if(turn=="red"){
-                turn="green"
+            
+            
+            for(let i=5; i>=0; i--){
+                if(board[i][s-1]=="s"){
+                    board[i][s-1] = turn;
+
+
+                    if(turn=="red"){
+                        turn="green"
+                    }
+                    else{
+                        turn="red"
+                    }
+        
+                    return[board,true,turn];
+
+                }
             }
-            else{
-                turn="red"
-            }
-            board[s-1] = (board[s-1]-1)
-            return[board,true,turn];
+
+            return[board,false,turn];
             
         }
         
@@ -44,29 +62,32 @@ export class Connect_4 extends GameEngine{
     }
 
     check(board,s){
-        if(s<1||s>7||this.board[s-1]==-1){
+        if(s<1||s>7||board[s-1]==-1){
             return false
         }
         return true
     }
 
-    draw(gameState){
-        let board = gameState[0];
-        let state = gameState[1];
-        let turn = gameState[2];
-        let s=document.getElementById("input").value
-        if(state == false){
-            document.getElementById('outMessage').innerHTML="Not Valid!";
+    draw(board){
+
+        for(let i=0; i<=5; i++){
+            for(let j=0; j<=6; j++){
+                if(board[i][j]=="red"){
+                    document.getElementById((i).toString().concat((j+1).toString())).style.backgroundColor="red"
+                }
+                else if(board[i][j]=="green"){
+                    document.getElementById((i).toString().concat((j+1).toString())).style.backgroundColor="green"
+                }
+            }
         }
-        else{
-            document.getElementById('outMessage').innerHTML="";
-        }
-        if(this.turn=="red"){
-            document.getElementById((this.board[s-1]).toString().concat(s.toString())).style.backgroundColor="red"
-        }
-        else{
-            document.getElementById(this.board[s-1].toString().concat(s.toString())).style.backgroundColor="green"
-        }
+
+
+        // if(this.turn=="red"){
+        //     document.getElementById((this.board[s-1]).toString().concat(s.toString())).style.backgroundColor="red"
+        // }
+        // else{
+        //     document.getElementById(this.board[s-1].toString().concat(s.toString())).style.backgroundColor="green"
+        // }
     }
 
 
