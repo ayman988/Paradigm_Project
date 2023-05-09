@@ -13,20 +13,8 @@ export class Sudoku extends GameEngine{
 
     Initialize(){
 
-        // let base=[
-        //     [5,3,0,0,7,0,0,0,0],
-        //     [6,0,0,1,9,5,0,0,0],
-        //     [0,9,8,0,0,0,0,6,0],
-        //     [8,0,0,0,6,0,0,0,3],
-        //     [4,0,0,8,0,3,0,0,1],
-        //     [7,0,0,0,2,0,0,0,6],
-        //     [0,6,0,0,0,0,2,8,0],
-        //     [0,0,0,4,1,9,0,0,5],
-        //     [0,0,0,0,8,0,0,7,9]
-        // ];
 
         let base = this.generateSudokuBoard();
-        console.log(base);
 
         let board=[
             [0,0,0,0,0,0,0,0,0],
@@ -65,61 +53,143 @@ export class Sudoku extends GameEngine{
         return [board,true,"non",base]
     }
 
-
-    generateSudokuBoard() {
+     generateSudokuBoard() {
         const board = [];
+        const size = 9;
       
-        // Create an empty 9x9 board
-        for (let i = 0; i < 9; i++) {
-          board[i] = [];
-          for (let j = 0; j < 9; j++) {
-            board[i][j] = 0;
-          }
+        // Create an empty board
+        for (let i = 0; i < size; i++) {
+          board.push(new Array(size).fill(0));
         }
       
-        // Fill the board with random numbers
-        for (let k = 0; k < 40; k++) {
+        // Fill the board with valid numbers
+        this.fillBoard(board, 0, 0);
+
+
+        for (let k = 0; k < 25; k++) {
             let i = Math.floor(Math.random() * 8);
             let j = Math.floor(Math.random() * 8);
-            let num = 0;
-            while (num === 0 || !this.isValidMove(board, i, j, num)) {
-              num = Math.floor(Math.random() * 9) + 1;
-            }
-            board[i][j] = num;
-          
-        }
-      
-        return board;
-    }
 
-    isValidMove(board, row, col, num) {
-        // Check row
+            board[i][j] = 0;
+        }
+        return board;
+      }
+      
+       fillBoard(board, row, col) {
+        const size = 9;
+        let nextRow = row;
+        let nextCol = col + 1;
+        if (nextCol >= size) {
+          nextRow++;
+          nextCol = 0;
+        }
+        if (row >= size) {
+          return true; // We've filled the entire board!
+        }
+      
+        const shuffledValues = this.shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+      
+        for (const value of shuffledValues) {
+          if (this.isValid(board, row, col, value)) {
+            board[row][col] = value;
+            if (this.fillBoard(board, nextRow, nextCol)) {
+              return true;
+            }
+            board[row][col] = 0; // Backtrack
+          }
+        }
+      
+        return false; // No valid number found
+      }
+      
+       isValid(board, row, col, value) {
+        // Check the row and column
         for (let i = 0; i < 9; i++) {
-          if (board[row][i] === num) {
+          if (board[row][i] === value || board[i][col] === value) {
             return false;
           }
         }
       
-        // Check column
-        for (let i = 0; i < 9; i++) {
-          if (board[i][col] === num) {
-            return false;
-          }
-        }
-      
-        // Check box
+        // Check the 3x3 box
         const boxRow = Math.floor(row / 3) * 3;
         const boxCol = Math.floor(col / 3) * 3;
         for (let i = boxRow; i < boxRow + 3; i++) {
           for (let j = boxCol; j < boxCol + 3; j++) {
-            if (board[i][j] === num) {
+            if (board[i][j] === value) {
               return false;
             }
           }
         }
       
         return true;
-    }
+      }
+      
+       shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+      
+
+
+    
+
+    // generateSudokuBoard() {
+    //     const board = [];
+      
+    //     // Create an empty 9x9 board
+    //     for (let i = 0; i < 9; i++) {
+    //       board[i] = [];
+    //       for (let j = 0; j < 9; j++) {
+    //         board[i][j] = 0;
+    //       }
+    //     }
+      
+    //     // Fill the board with random numbers
+    //     for (let k = 0; k < 40; k++) {
+    //         let i = Math.floor(Math.random() * 8);
+    //         let j = Math.floor(Math.random() * 8);
+    //         let num = 0;
+    //         while (num === 0 || !this.isValidMove(board, i, j, num)) {
+    //           num = Math.floor(Math.random() * 9) + 1;
+    //         }
+    //         board[i][j] = num;
+          
+    //     }
+      
+    //     return board;
+    // }
+
+    // isValidMove(board, row, col, num) {
+    //     // Check row
+    //     for (let i = 0; i < 9; i++) {
+    //       if (board[row][i] === num) {
+    //         return false;
+    //       }
+    //     }
+      
+    //     // Check column
+    //     for (let i = 0; i < 9; i++) {
+    //       if (board[i][col] === num) {
+    //         return false;
+    //       }
+    //     }
+      
+    //     // Check box
+    //     const boxRow = Math.floor(row / 3) * 3;
+    //     const boxCol = Math.floor(col / 3) * 3;
+    //     for (let i = boxRow; i < boxRow + 3; i++) {
+    //       for (let j = boxCol; j < boxCol + 3; j++) {
+    //         if (board[i][j] === num) {
+    //           return false;
+    //         }
+    //       }
+    //     }
+      
+    //     return true;
+    // }
 
     control(gameState,s){
 

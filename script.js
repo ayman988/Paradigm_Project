@@ -36,13 +36,9 @@ window.addEventListener('DOMContentLoaded', () => {
               throw new Error("Abstract classes can't be instantiated");
             }
 
-
-            
             this.start();
             
-            
-
-            }            
+        }            
             
         
 
@@ -55,11 +51,11 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         Initialize(){
-
+            throw new Error("Method 'Initialize()' must be implemented.");
         }
 
 
-        // state[board,state,turn]
+        // gameState[board,state,turn]
         async start(){
 
             let gameState = this.Initialize();
